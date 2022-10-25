@@ -32,6 +32,7 @@ final class OnboardingCollectionViewCell: UICollectionViewCell {
     
     func showExploreButton(shouldShow: Bool) {
         exploreButton.isHidden = !shouldShow
+        exploreButton.layer.cornerRadius = 4
     }
 
     @IBAction func exploreButtonTapped(_ sender: Any) {
