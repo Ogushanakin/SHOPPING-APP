@@ -123,7 +123,7 @@ final class OnboardingViewController: UIViewController {
            let window = sceneDelegate.window {
             window.rootViewController = controller
             /// animation
-            UIView.transition(with: window, duration: 0.5,
+            UIView.transition(with: window, duration: 0.6,
                               options: .transitionCrossDissolve,
                               animations: nil, completion: nil)
         }
