@@ -55,7 +55,7 @@ class FirstOnboardingViewController: UIViewController {
     // MARK: - Helpers
     
     private func setupViews() {
-        getStartedButton.layer.cornerRadius = getStartedButton.frame.height / 2
+        getStartedButton.layer.cornerRadius = 4
         getStartedButton.layer.masksToBounds = true
         darkView.backgroundColor = UIColor.init(white: 0.1, alpha: 0.4)
     }
