@@ -18,6 +18,9 @@
 		7180313E29072C2D00C163F9 /* FirstOnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7180313C29072C2D00C163F9 /* FirstOnboardingViewController.xib */; };
 		7180314029072FFD00C163F9 /* onboardingVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7180313F29072FFD00C163F9 /* onboardingVideo.mp4 */; };
 		7180314B290735D100C163F9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7180314A290735D100C163F9 /* Extensions.swift */; };
+		7186D82729088F3400EDA60B /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186D82629088F3400EDA60B /* InputContainerView.swift */; };
+		7186D82929088F5600EDA60B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186D82829088F5600EDA60B /* CustomTextField.swift */; };
+		7186D82B29088FBD00EDA60B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186D82A29088FBD00EDA60B /* LoginViewModel.swift */; };
 		71B12E7B2907F8B300C7D9F8 /* OnboardingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B12E7A2907F8B300C7D9F8 /* OnboardingItem.swift */; };
 		71B12E7E290835E300C7D9F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B12E7D290835E300C7D9F8 /* LoginViewController.swift */; };
 		71B12E8129083F6A00C7D9F8 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B12E8029083F6A00C7D9F8 /* LoadingViewController.swift */; };
@@ -39,6 +42,9 @@
 		7180313C29072C2D00C163F9 /* FirstOnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstOnboardingViewController.xib; sourceTree = "<group>"; };
 		7180313F29072FFD00C163F9 /* onboardingVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = onboardingVideo.mp4; sourceTree = "<group>"; };
 		7180314A290735D100C163F9 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7186D82629088F3400EDA60B /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
+		7186D82829088F5600EDA60B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		7186D82A29088FBD00EDA60B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		71B12E7A2907F8B300C7D9F8 /* OnboardingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingItem.swift; sourceTree = "<group>"; };
 		71B12E7D290835E300C7D9F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71B12E8029083F6A00C7D9F8 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				718031212906EAED00C163F9 /* OnboardingScreen */,
-				71B12E7C290835B400C7D9F8 /* AuthenticationScreen */,
+				71B12E7C290835B400C7D9F8 /* LoginScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -192,12 +198,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		71B12E7C290835B400C7D9F8 /* AuthenticationScreen */ = {
+		71B12E7C290835B400C7D9F8 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				7186D82A29088FBD00EDA60B /* LoginViewModel.swift */,
 				71B12E7D290835E300C7D9F8 /* LoginViewController.swift */,
+				7186D82629088F3400EDA60B /* InputContainerView.swift */,
+				7186D82829088F5600EDA60B /* CustomTextField.swift */,
 			);
-			path = AuthenticationScreen;
+			path = LoginScreen;
 			sourceTree = "<group>";
 		};
 		71B12E7F29083DD100C7D9F8 /* Views */ = {
@@ -289,14 +298,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				71B12E7E290835E300C7D9F8 /* LoginViewController.swift in Sources */,
+				7186D82929088F5600EDA60B /* CustomTextField.swift in Sources */,
 				7180314B290735D100C163F9 /* Extensions.swift in Sources */,
 				7180313D29072C2D00C163F9 /* FirstOnboardingViewController.swift in Sources */,
 				71E8DC302907CA9500839C03 /* OnboardingViewController.swift in Sources */,
 				718031082906E75600C163F9 /* AppDelegate.swift in Sources */,
 				71B12E8129083F6A00C7D9F8 /* LoadingViewController.swift in Sources */,
 				71B12E7B2907F8B300C7D9F8 /* OnboardingItem.swift in Sources */,
+				7186D82B29088FBD00EDA60B /* LoginViewModel.swift in Sources */,
 				7180310A2906E75600C163F9 /* SceneDelegate.swift in Sources */,
 				7114C6162907D70700655CA3 /* OnboardingCollectionViewCell.swift in Sources */,
+				7186D82729088F3400EDA60B /* InputContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
