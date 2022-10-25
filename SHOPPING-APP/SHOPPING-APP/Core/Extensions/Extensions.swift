@@ -99,7 +99,7 @@ extension UIViewController {
     
     func configureGradientBackground() {
         let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
+        gradient.colors = [UIColor.lightGray.cgColor, UIColor.black.cgColor]
         gradient.locations = [0, 1]
         view.layer.addSublayer(gradient)
         gradient.frame = view.frame

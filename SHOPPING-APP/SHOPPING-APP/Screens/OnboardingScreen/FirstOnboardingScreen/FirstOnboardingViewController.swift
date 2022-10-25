@@ -22,6 +22,7 @@ class FirstOnboardingViewController: UIViewController {
     private var appEventSubscribers = [AnyCancellable]()
 
     // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -127,7 +128,15 @@ class FirstOnboardingViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func getStartedButtonTapped(_ sender: Any) {
-        let controller = OnboardingController()
-        navigationController?.pushViewController(controller, animated: true)
+        let onboardingController = OnboardingViewController()
+        navigationController?.pushViewController(onboardingController, animated: true)
+        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            window.rootViewController = onboardingController
+            /// animation
+            UIView.transition(with: window, duration: 0.5,
+                              options: .transitionCrossDissolve,
+                              animations: nil, completion: nil)
+        }
     }
 }
