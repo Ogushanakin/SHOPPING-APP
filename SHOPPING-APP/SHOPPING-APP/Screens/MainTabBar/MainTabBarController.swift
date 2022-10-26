@@ -14,6 +14,7 @@ final class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemBackground
         configureViewControllers()
     }
     
@@ -40,7 +41,6 @@ final class MainTabBarController: UITabBarController {
                 
         viewControllers = [products, search, profile]
         
-        tabBar.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
     }
     
     func templateNavigationController(unselectedImage: UIImage, selectedImage: UIImage, title: String, rootViewController: UIViewController) -> UINavigationController {
@@ -48,6 +48,7 @@ final class MainTabBarController: UITabBarController {
         nav.tabBarItem.image = unselectedImage
         nav.tabBarItem.selectedImage = selectedImage
         nav.tabBarItem.title = title
+        tabBar.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         return nav
     }
 }

@@ -94,7 +94,7 @@ final class LoginViewController: UIViewController,
            let window = sceneDelegate.window {
             window.rootViewController = controller
             /// animation
-            UIView.transition(with: window, duration: 0.1,
+            UIView.transition(with: window, duration: 0.5,
                               options: .transitionCrossDissolve,
                               animations: nil, completion: nil)
         }

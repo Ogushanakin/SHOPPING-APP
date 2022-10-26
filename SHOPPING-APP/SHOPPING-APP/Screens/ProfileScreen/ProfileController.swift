@@ -14,5 +14,23 @@ final class ProfileController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        
+        configureNavigation()
+    }
+    
+    private func configureNavigation() {
+        configureNavigationBar(withTitle: "PROFILE", prefersLargeTitles: false)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .done, target: self, action: #selector(handleShowChart))
+        navigationItem.rightBarButtonItem?.tintColor = .label
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.left"), style: .done, target: self, action: #selector(handleShowMenu))
+        navigationItem.leftBarButtonItem?.tintColor = .label
+    }
+    
+    @objc func handleShowChart() {
+        
+    }
+    
+    @objc func handleShowMenu() {
+        
     }
 }
