@@ -92,9 +92,16 @@ final class LoginViewController: UIViewController,
     }
     
     @objc func handleShowSignUp() {
-        print("signup")
-        
-        checkFormStatus()
+        let controller = SignUpViewController()
+        navigationController?.pushViewController(controller, animated: true)
+        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            window.rootViewController = controller
+            /// animation
+            UIView.transition(with: window, duration: 1,
+                              options: .transitionCrossDissolve,
+                              animations: nil, completion: nil)
+        }
     }
     
     @objc func textDidChange(sender: UITextField) {
