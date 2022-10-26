@@ -26,6 +26,10 @@
 		71B12E8129083F6A00C7D9F8 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B12E8029083F6A00C7D9F8 /* LoadingViewController.swift */; };
 		71E8DC302907CA9500839C03 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8DC2E2907CA9500839C03 /* OnboardingViewController.swift */; };
 		71E8DC312907CA9500839C03 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71E8DC2F2907CA9500839C03 /* OnboardingViewController.xib */; };
+		71FD302A290914CA00892B22 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FD3029290914CA00892B22 /* MainTabBarController.swift */; };
+		71FD302D2909183000892B22 /* ProductsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FD302C2909183000892B22 /* ProductsController.swift */; };
+		71FD303029091A3600892B22 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FD302F29091A3600892B22 /* SearchController.swift */; };
+		71FD303329091B3000892B22 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FD303229091B3000892B22 /* ProfileController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		71B12E8029083F6A00C7D9F8 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		71E8DC2E2907CA9500839C03 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		71E8DC2F2907CA9500839C03 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
+		71FD3029290914CA00892B22 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		71FD302C2909183000892B22 /* ProductsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsController.swift; sourceTree = "<group>"; };
+		71FD302F29091A3600892B22 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		71FD303229091B3000892B22 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,10 @@
 			children = (
 				718031212906EAED00C163F9 /* OnboardingScreen */,
 				71B12E7C290835B400C7D9F8 /* LoginScreen */,
+				71FD3028290914A900892B22 /* MainTabBar */,
+				71FD302B2909181400892B22 /* ProductsScreen */,
+				71FD302E29091A0800892B22 /* SearchScreen */,
+				71FD303129091B1F00892B22 /* ProfileScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -218,6 +230,38 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		71FD3028290914A900892B22 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				71FD3029290914CA00892B22 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		71FD302B2909181400892B22 /* ProductsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				71FD302C2909183000892B22 /* ProductsController.swift */,
+			);
+			path = ProductsScreen;
+			sourceTree = "<group>";
+		};
+		71FD302E29091A0800892B22 /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				71FD302F29091A3600892B22 /* SearchController.swift */,
+			);
+			path = SearchScreen;
+			sourceTree = "<group>";
+		};
+		71FD303129091B1F00892B22 /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				71FD303229091B3000892B22 /* ProfileController.swift */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -298,12 +342,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				71B12E7E290835E300C7D9F8 /* LoginViewController.swift in Sources */,
+				71FD303029091A3600892B22 /* SearchController.swift in Sources */,
 				7186D82929088F5600EDA60B /* CustomTextField.swift in Sources */,
+				71FD302D2909183000892B22 /* ProductsController.swift in Sources */,
 				7180314B290735D100C163F9 /* Extensions.swift in Sources */,
 				7180313D29072C2D00C163F9 /* FirstOnboardingViewController.swift in Sources */,
 				71E8DC302907CA9500839C03 /* OnboardingViewController.swift in Sources */,
+				71FD303329091B3000892B22 /* ProfileController.swift in Sources */,
 				718031082906E75600C163F9 /* AppDelegate.swift in Sources */,
 				71B12E8129083F6A00C7D9F8 /* LoadingViewController.swift in Sources */,
+				71FD302A290914CA00892B22 /* MainTabBarController.swift in Sources */,
 				71B12E7B2907F8B300C7D9F8 /* OnboardingItem.swift in Sources */,
 				7186D82B29088FBD00EDA60B /* LoginViewModel.swift in Sources */,
 				7180310A2906E75600C163F9 /* SceneDelegate.swift in Sources */,
