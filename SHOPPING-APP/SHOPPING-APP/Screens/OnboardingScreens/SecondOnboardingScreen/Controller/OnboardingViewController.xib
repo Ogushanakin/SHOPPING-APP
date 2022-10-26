@@ -31,7 +31,7 @@
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="SKIP">
                                 <fontDescription key="titleFontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                <color key="baseForegroundColor" red="0.25584536790000001" green="0.26807487009999997" blue="0.29607060549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="baseForegroundColor" red="0.12204999480000001" green="0.19063064460000001" blue="0.20152774449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </buttonConfiguration>
                             <connections>
                                 <action selector="nextButtonTapped:" destination="-1" eventType="touchUpInside" id="rpW-dM-eQ0"/>
@@ -51,7 +51,7 @@
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="NEXT">
                                 <fontDescription key="titleFontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                <color key="baseForegroundColor" red="0.21960784310000001" green="0.25882352939999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="baseForegroundColor" red="0.12204999480000001" green="0.19063064460000001" blue="0.20152774449999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </buttonConfiguration>
                             <connections>
                                 <action selector="nextButtonTapped:" destination="-1" eventType="touchUpInside" id="T7T-OH-baS"/>

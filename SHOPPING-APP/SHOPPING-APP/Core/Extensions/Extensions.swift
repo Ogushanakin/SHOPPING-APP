@@ -111,5 +111,25 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
+    func configureNavigationBar(withTitle title: String, prefersLargeTitles: Bool) {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.largeTitleTextAttributes = [.foregroundColor: #colorLiteral(red: 0.1843137255, green: 0.2352941176, blue: 0.4941176471, alpha: 1)]
+        appearance.titleTextAttributes = [.foregroundColor: #colorLiteral(red: 0.170517385, green: 0.2371833622, blue: 0.5116912127, alpha: 1)]
+        appearance.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.9176470588, blue: 0.9215686275, alpha: 1)
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        navigationController?.navigationBar.prefersLargeTitles = prefersLargeTitles
+        navigationItem.title = title
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.1843137255, green: 0.2352941176, blue: 0.4941176471, alpha: 1)
+        navigationController?.navigationBar.isTranslucent = true
+        
+        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
+        
+    }
 }
 
