@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol AuthenticationControllerProtocol {
     func checkFormStatus()
@@ -15,8 +16,7 @@ protocol AuthenticationDelegate: AnyObject {
     func authenticationComplete()
 }
 
-final class LoginViewController: UIViewController,
-                                 OnboardingSeenProtocol{
+final class LoginViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -24,7 +24,6 @@ final class LoginViewController: UIViewController,
     
     weak var delegate: AuthenticationDelegate?
     
-    var isOnboardingSeen = true
     
     private let iconImage: UIImageView = {
         let iv = UIImageView()
@@ -88,29 +87,27 @@ final class LoginViewController: UIViewController,
     // MARK: - Selectors
     
     @objc func handleLogin() {
-        let controller = MainTabBarController()
-        navigationController?.pushViewController(controller, animated: true)
-        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
-           let window = sceneDelegate.window {
-            window.rootViewController = controller
-            /// animation
-            UIView.transition(with: window, duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: nil, completion: nil)
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("DEBUG: Error signing in \(error.localizedDescription)")
+                return
+            }
+            
+            let controller = MainTabBarController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
         }
     }
     
     @objc func handleShowSignUp() {
         let controller = SignUpViewController()
-        navigationController?.pushViewController(controller, animated: true)
-        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
-           let window = sceneDelegate.window {
-            window.rootViewController = controller
-            /// animation
-            UIView.transition(with: window, duration: 0.8,
-                              options: .transitionCrossDissolve,
-                              animations: nil, completion: nil)
-        }
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
     
     @objc func textDidChange(sender: UITextField) {

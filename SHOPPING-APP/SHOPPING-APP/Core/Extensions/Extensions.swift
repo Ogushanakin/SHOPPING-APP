@@ -107,7 +107,7 @@ extension UIViewController {
     
     func configureNavigationBar(withTitle title: String, prefersLargeTitles: Bool) {
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithDefaultBackground()
+        appearance.configureWithOpaqueBackground()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
         appearance.titleTextAttributes = [.foregroundColor: UIColor.label]
         appearance.backgroundColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
@@ -117,8 +117,8 @@ extension UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
         navigationController?.navigationBar.prefersLargeTitles = prefersLargeTitles
-        navigationItem.title = title
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationItem.title = title
+        navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.isTranslucent = true
         
         navigationController?.navigationBar.overrideUserInterfaceStyle = .dark

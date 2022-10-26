@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 final class SignUpViewController: UIViewController {
@@ -91,29 +92,37 @@ final class SignUpViewController: UIViewController {
     // MARK: - Selectors
     
     @objc func handleSignUp() {
-        let controller = MainTabBarController()
-        navigationController?.pushViewController(controller, animated: true)
-        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
-           let window = sceneDelegate.window {
-            window.rootViewController = controller
-            /// animation
-            UIView.transition(with: window, duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: nil, completion: nil)
+
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullnameTextField.text else { return }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("DEBUG: failed to create user with error: \(error.localizedDescription)")
+                return
+            }
+            guard let uid = result?.user.uid else { return }
+            
+            let values = ["email": email, "fullname": fullname]
+            
+            Database.database().reference().child("users").child(uid).updateChildValues(values) { (err, ref) in
+                if let error = error {
+                    print("DEBUG: failed to upload user data with error: \(error.localizedDescription)")
+                    return
+                }
+                print("DEBUG: Successfully created user and upload user info...")
+            }
         }
+
+        let controller = MainTabBarController()
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
     
     @objc func handleShowLogin() {
-        let controller = LoginViewController()
-        navigationController?.popViewController(animated: true)
-        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
-           let window = sceneDelegate.window {
-            window.rootViewController = controller
-            /// animation
-            UIView.transition(with: window, duration: 0.8,
-                              options: .transitionCrossDissolve,
-                              animations: nil, completion: nil)
-        }
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func textDidChange(sender: UITextField) {
