@@ -11,6 +11,10 @@
 		7114C6172907D70700655CA3 /* OnboardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7114C6152907D70700655CA3 /* OnboardingCollectionViewCell.xib */; };
 		715B300D29094B3D0042E270 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B300C29094B3D0042E270 /* SignUpViewController.swift */; };
 		715B300F29094C8E0042E270 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715B300E29094C8E0042E270 /* SignUpViewModel.swift */; };
+		716D87C229095F0D00132D0B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D87C129095F0D00132D0B /* MainTabBarController.swift */; };
+		716D87C429095F4400132D0B /* ProductsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D87C329095F4400132D0B /* ProductsController.swift */; };
+		716D87C629095F6700132D0B /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D87C529095F6700132D0B /* SearchController.swift */; };
+		716D87C829095F8700132D0B /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D87C729095F8700132D0B /* ProfileController.swift */; };
 		718031082906E75600C163F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718031072906E75600C163F9 /* AppDelegate.swift */; };
 		7180310A2906E75600C163F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718031092906E75600C163F9 /* SceneDelegate.swift */; };
 		7180310F2906E75600C163F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7180310D2906E75600C163F9 /* Main.storyboard */; };
@@ -35,6 +39,10 @@
 		7114C6152907D70700655CA3 /* OnboardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		715B300C29094B3D0042E270 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		715B300E29094C8E0042E270 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		716D87C129095F0D00132D0B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		716D87C329095F4400132D0B /* ProductsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsController.swift; sourceTree = "<group>"; };
+		716D87C529095F6700132D0B /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		716D87C729095F8700132D0B /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		718031042906E75600C163F9 /* SHOPPING-APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SHOPPING-APP.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		718031072906E75600C163F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		718031092906E75600C163F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +94,38 @@
 			path = SignUpScreen;
 			sourceTree = "<group>";
 		};
+		716D87BD29095E8200132D0B /* ProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				716D87C729095F8700132D0B /* ProfileController.swift */,
+			);
+			path = ProfileScreen;
+			sourceTree = "<group>";
+		};
+		716D87BE29095E8500132D0B /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				716D87C529095F6700132D0B /* SearchController.swift */,
+			);
+			path = SearchScreen;
+			sourceTree = "<group>";
+		};
+		716D87BF29095E8800132D0B /* ProductsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				716D87C329095F4400132D0B /* ProductsController.swift */,
+			);
+			path = ProductsScreen;
+			sourceTree = "<group>";
+		};
+		716D87C029095E9F00132D0B /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				716D87C129095F0D00132D0B /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
 		718030FB2906E75600C163F9 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +157,10 @@
 				718031212906EAED00C163F9 /* OnboardingScreens */,
 				71B12E7C290835B400C7D9F8 /* LoginScreen */,
 				715B300B29094AFC0042E270 /* SignUpScreen */,
+				716D87C029095E9F00132D0B /* MainTabBar */,
+				716D87BF29095E8800132D0B /* ProductsScreen */,
+				716D87BE29095E8500132D0B /* SearchScreen */,
+				716D87BD29095E8200132D0B /* ProfileScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -313,14 +357,18 @@
 			files = (
 				715B300D29094B3D0042E270 /* SignUpViewController.swift in Sources */,
 				71B12E7E290835E300C7D9F8 /* LoginViewController.swift in Sources */,
+				716D87C229095F0D00132D0B /* MainTabBarController.swift in Sources */,
 				7186D82929088F5600EDA60B /* CustomTextField.swift in Sources */,
 				7180314B290735D100C163F9 /* Extensions.swift in Sources */,
+				716D87C829095F8700132D0B /* ProfileController.swift in Sources */,
 				7180313D29072C2D00C163F9 /* FirstOnboardingViewController.swift in Sources */,
 				71E8DC302907CA9500839C03 /* OnboardingViewController.swift in Sources */,
 				715B300F29094C8E0042E270 /* SignUpViewModel.swift in Sources */,
 				718031082906E75600C163F9 /* AppDelegate.swift in Sources */,
 				71B12E8129083F6A00C7D9F8 /* LoadingViewController.swift in Sources */,
+				716D87C629095F6700132D0B /* SearchController.swift in Sources */,
 				71B12E7B2907F8B300C7D9F8 /* OnboardingItem.swift in Sources */,
+				716D87C429095F4400132D0B /* ProductsController.swift in Sources */,
 				7186D82B29088FBD00EDA60B /* LoginViewModel.swift in Sources */,
 				7180310A2906E75600C163F9 /* SceneDelegate.swift in Sources */,
 				7114C6162907D70700655CA3 /* OnboardingCollectionViewCell.swift in Sources */,

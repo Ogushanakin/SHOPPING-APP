@@ -91,7 +91,16 @@ final class SignUpViewController: UIViewController {
     // MARK: - Selectors
     
     @objc func handleSignUp() {
-        print("login")
+        let controller = MainTabBarController()
+        navigationController?.pushViewController(controller, animated: true)
+        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
+           let window = sceneDelegate.window {
+            window.rootViewController = controller
+            /// animation
+            UIView.transition(with: window, duration: 1,
+                              options: .transitionCrossDissolve,
+                              animations: nil, completion: nil)
+        }
     }
     
     @objc func handleShowLogin() {
