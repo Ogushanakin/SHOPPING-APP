@@ -60,6 +60,7 @@ final class ProfileCell: UITableViewCell {
     }
     
     func configure() {
+        backgroundColor = .white
         guard let viewModel = viewModel else { return }
         
         iconImage.image = UIImage(systemName: viewModel.iconImageName)

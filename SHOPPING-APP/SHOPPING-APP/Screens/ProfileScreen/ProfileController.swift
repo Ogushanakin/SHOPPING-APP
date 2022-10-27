@@ -101,6 +101,8 @@ extension ProfileController {
         switch viewModel {
         case .accountInfo:
             print("DEBUG: Show account info page..")
+        case .favorites:
+            print("DEBUG: Show favorites list page...")
         case .settings:
             print("DEBUG: Show settings page...")
         }

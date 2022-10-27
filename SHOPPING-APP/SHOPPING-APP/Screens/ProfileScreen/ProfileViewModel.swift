@@ -9,11 +9,13 @@ import Foundation
 
 enum ProfileViewModel: Int, CaseIterable {
     case accountInfo
+    case favorites
     case settings
     
     var description: String {
         switch self {
         case .accountInfo: return "Account Info"
+        case .favorites: return "Favorites"
         case .settings: return "Settings"
         }
     }
@@ -21,6 +23,7 @@ enum ProfileViewModel: Int, CaseIterable {
     var iconImageName: String {
         switch self {
         case .accountInfo: return "person.circle"
+        case .favorites: return "heart"
         case .settings: return "gear"
         }
     }

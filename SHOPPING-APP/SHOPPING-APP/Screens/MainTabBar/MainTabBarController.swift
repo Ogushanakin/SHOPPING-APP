@@ -77,11 +77,10 @@ final class MainTabBarController: UITabBarController {
     private func configureViewControllers() {
         view.backgroundColor = .white
         
-        let layout = UICollectionViewFlowLayout()
         let products = templateNavigationController(unselectedImage: UIImage(systemName: "shippingbox")!,
                                                     selectedImage: UIImage(systemName: "shippingbox")!,
                                                     title: "Products",
-                                                    rootViewController: ProductsController(collectionViewLayout: layout))
+                                                    rootViewController: ProductsController())
         
         let search = templateNavigationController(unselectedImage: UIImage(systemName: "magnifyingglass")!,
                                                   selectedImage: UIImage(systemName: "magnifyingglass")!,
@@ -98,6 +97,7 @@ final class MainTabBarController: UITabBarController {
     
     func templateNavigationController(unselectedImage: UIImage, selectedImage: UIImage, title: String, rootViewController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: rootViewController)
+        navigationItem.title = "SHOPPING APP"
         nav.tabBarItem.image = unselectedImage
         nav.tabBarItem.selectedImage = selectedImage
         nav.tabBarItem.title = title
@@ -106,12 +106,13 @@ final class MainTabBarController: UITabBarController {
     }
     
     func configureNavigationBarButtons() {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .done, target: self, action: #selector(handleShowCart))
-            navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.left"), style: .done, target: self, action: #selector(showSideMenu))
-            navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .done, target: self, action: #selector(handleShowCart))
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.left"), style: .done, target: self, action: #selector(showSideMenu))
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
+        
+        
     }
-    
 }
 
 extension MainTabBarController: OnboardingControllerDelegate {
