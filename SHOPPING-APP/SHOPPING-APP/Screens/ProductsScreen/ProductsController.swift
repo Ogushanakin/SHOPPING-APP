@@ -13,24 +13,8 @@ final class ProductsController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
-        configureNavigation()
+        view.backgroundColor = .white
     }
     
-    private func configureNavigation() {
-        configureNavigationBar(withTitle: "PRODUCTS", prefersLargeTitles: false)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .done, target: self, action: #selector(handleShowChart))
-        navigationItem.rightBarButtonItem?.tintColor = .label
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.left"), style: .done, target: self, action: #selector(handleShowMenu))
-        navigationItem.leftBarButtonItem?.tintColor = .label
-    }
-    
-    @objc func handleShowChart() {
-        
-    }
-    
-    @objc func handleShowMenu() {
-        
-    }
     
 }

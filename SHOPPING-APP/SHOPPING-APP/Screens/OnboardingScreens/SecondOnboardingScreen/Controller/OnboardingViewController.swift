@@ -118,15 +118,9 @@ final class OnboardingViewController: UIViewController {
     
     private func showMainApp() {
         let controller = LoginViewController()
-        navigationController?.pushViewController(controller, animated: true)
-        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
-           let window = sceneDelegate.window {
-            window.rootViewController = controller
-            /// animation
-            UIView.transition(with: window, duration: 0.6,
-                              options: .transitionCrossDissolve,
-                              animations: nil, completion: nil)
-        }
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
     
     // MARK: - IBActions

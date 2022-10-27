@@ -9,10 +9,15 @@ import UIKit
 import AVFoundation
 import Combine
 
+protocol OnboardingControllerDelegate: AnyObject {
+    func controllerWantsToDismiss(_ controller: FirstOnboardingViewController)
+}
+
 class FirstOnboardingViewController: UIViewController {
     
     // MARK: - Properties
     
+    weak var delegate: OnboardingControllerDelegate?
     @IBOutlet weak var darkView: UIView!
     @IBOutlet weak var getStartedButton: UIButton!
     
@@ -128,15 +133,11 @@ class FirstOnboardingViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func getStartedButtonTapped(_ sender: Any) {
-        let onboardingController = OnboardingViewController()
-        navigationController?.pushViewController(onboardingController, animated: true)
-        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
-           let window = sceneDelegate.window {
-            window.rootViewController = onboardingController
-            /// animation
-            UIView.transition(with: window, duration: 0.5,
-                              options: .transitionCrossDissolve,
-                              animations: nil, completion: nil)
-        }
+        let controller = OnboardingViewController()
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
+        
+        delegate?.controllerWantsToDismiss(self)
     }
 }
