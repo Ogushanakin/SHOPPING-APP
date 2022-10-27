@@ -68,16 +68,8 @@ final class MainTabBarController: UITabBarController {
         
     }
     
-    @objc func handleLogout() {
-        let alert = UIAlertController(title: nil, message: "Are you sure you want to log out?", preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
-            self.logout()
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        present(alert, animated: true, completion: nil)
+    @objc func showSideMenu() {
+        print("SideBarMenu")
     }
     
     // MARK: - Helpers
@@ -109,15 +101,15 @@ final class MainTabBarController: UITabBarController {
         nav.tabBarItem.image = unselectedImage
         nav.tabBarItem.selectedImage = selectedImage
         nav.tabBarItem.title = title
-        tabBar.tintColor = .label
+        tabBar.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         return nav
     }
     
     func configureNavigationBarButtons() {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .done, target: self, action: #selector(handleShowCart))
-            navigationItem.rightBarButtonItem?.tintColor = .label
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left.to.line"), style: .done, target: self, action: #selector(handleLogout))
-            navigationItem.leftBarButtonItem?.tintColor = .label
+            navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
+            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.left"), style: .done, target: self, action: #selector(showSideMenu))
+            navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
     }
     
 }

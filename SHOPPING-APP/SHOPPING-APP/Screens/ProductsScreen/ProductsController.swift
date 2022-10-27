@@ -13,7 +13,7 @@ final class ProductsController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        view.backgroundColor = .white
     }
     
     
