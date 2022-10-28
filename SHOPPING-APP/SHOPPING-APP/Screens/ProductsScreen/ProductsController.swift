@@ -21,6 +21,7 @@ final class ProductsController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        getJewelery()
     }
     
     override func viewDidLayoutSubviews() {
@@ -28,7 +29,6 @@ final class ProductsController: UIViewController {
         
         productsFeedTable.frame = view.bounds
     }
-    
     
     func configureUI() {
         view.addSubview(productsFeedTable)
@@ -38,6 +38,13 @@ final class ProductsController: UIViewController {
         
         let headerView = HeroHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 400))
         productsFeedTable.tableHeaderView = headerView
+    }
+    
+    
+    private func getJewelery() {
+        APICaller.shared.getJewelery { _ in
+            
+        }
     }
 }
 
