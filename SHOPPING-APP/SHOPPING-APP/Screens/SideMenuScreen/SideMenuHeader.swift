@@ -1,17 +1,17 @@
 //
-//  ProfileHeader.swift
+//  SideMenuHeader.swift
 //  SHOPPING-APP
 //
-//  Created by AKIN on 27.10.2022.
+//  Created by AKIN on 28.10.2022.
 //
 
 import UIKit
 
-protocol ProfileHeaderDelegate: AnyObject {
+protocol SideMenuHeaderDelegate: AnyObject {
     func dismissController()
 }
 
-final class ProfileHeader: UIView {
+final class SideMenuHeader: UIView {
     
     // MARK: - Properties
     
@@ -19,7 +19,7 @@ final class ProfileHeader: UIView {
         didSet { populateUserData() }
     }
     
-    weak var delegate: ProfileHeaderDelegate?
+    weak var delegate: SideMenuHeaderDelegate?
     
     private let profileImageView: UIImageView = {
          let iv = UIImageView()
@@ -33,7 +33,7 @@ final class ProfileHeader: UIView {
     
     private let fullnameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         label.textAlignment = .center
         label.text = "Oğuzhan Akın"
@@ -43,7 +43,7 @@ final class ProfileHeader: UIView {
     private let usernameLabel: UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textAlignment = .center
         label.text = "@ogushanakin"
         return label
@@ -80,12 +80,12 @@ final class ProfileHeader: UIView {
     func configureUI() {
         backgroundColor = .white
         
-        profileImageView.setDimensions(height: 200, width: 200)
-        profileImageView.layer.cornerRadius = 100
+        profileImageView.setDimensions(height: 100, width: 100)
+        profileImageView.layer.cornerRadius = 50
         
         addSubview(profileImageView)
         profileImageView.centerX(inView: self)
-        profileImageView.anchor(top: topAnchor, paddingTop: 120)
+        profileImageView.anchor(top: topAnchor, paddingTop: 80)
         
         let stack = UIStackView(arrangedSubviews: [fullnameLabel, usernameLabel])
         stack.axis = .vertical
@@ -93,8 +93,9 @@ final class ProfileHeader: UIView {
         
         addSubview(stack)
         stack.centerX(inView: self)
-        stack.anchor(top: profileImageView.bottomAnchor, paddingTop: 16)
+        stack.anchor(top: profileImageView.bottomAnchor, paddingTop: 8)
         
     }
 
 }
+

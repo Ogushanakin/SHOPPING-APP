@@ -8,13 +8,24 @@
 
 import UIKit
 
-final class SearchController: UITableViewController {
+final class SearchController: UITableViewController, UISearchResultsUpdating {
     
+    let searchController = UISearchController()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        
+        print(text)
+    }
 }

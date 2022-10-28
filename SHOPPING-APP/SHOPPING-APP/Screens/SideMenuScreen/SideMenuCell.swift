@@ -1,17 +1,17 @@
 //
-//  ProfileCell.swift
+//  SideMenuCell.swift
 //  SHOPPING-APP
 //
-//  Created by AKIN on 27.10.2022.
+//  Created by AKIN on 28.10.2022.
 //
 
 import UIKit
 
-final class ProfileCell: UITableViewCell {
+final class SideMenuCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var viewModel: ProfileViewModel? {
+    var viewModel: SideMenuViewModel? {
         didSet { configure() }
     }
     
