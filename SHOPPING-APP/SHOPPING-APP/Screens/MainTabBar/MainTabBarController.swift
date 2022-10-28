@@ -104,7 +104,7 @@ import SideMenu
     // MARK: - Selectors
     
     @objc func handleShowCart() {
-        let controller = SearchController()
+        let controller = CartController()
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .popover
         self.present(nav, animated: true, completion: nil)

@@ -1,5 +1,5 @@
 //
-//  SideMenuViewController.swift
+//  ProductDetailController.swift
 //  SHOPPING-APP
 //
 //  Created by AKIN on 28.10.2022.
@@ -7,13 +7,11 @@
 
 import UIKit
 
-class SideMenuViewController: UIViewController {
-
+final class ProductDetailController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        configureGradientBackground()
+        
+        view.backgroundColor = .green
     }
-
-    
 }
