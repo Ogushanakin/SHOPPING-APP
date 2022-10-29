@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class HeroHeaderView: UIView {
+final class HeroHeaderView: UICollectionReusableView {
+    
+    static let identifier = "HeroHeaderView"
     
     private let heroImageView: UIImageView = {
         let imageView = UIImageView()

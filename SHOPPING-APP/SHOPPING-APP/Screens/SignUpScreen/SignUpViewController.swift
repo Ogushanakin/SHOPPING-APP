@@ -14,13 +14,18 @@ final class SignUpViewController: UIViewController {
     // MARK: - Properties
     
     private var viewModel = SignUpViewModel()
+    private var profileImage: UIImage?
     weak var delegate: AuthenticationDelegate?
 
     
-    private let iconImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "logo_transparent")
-        return iv
+    private lazy var plusPhotoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "plus_photo"), for: .normal)
+        button.tintColor = #colorLiteral(red: 0.2139298618, green: 0.369509697, blue: 0.3584182262, alpha: 1)
+        button.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
+        button.imageView?.clipsToBounds = true
+        button.clipsToBounds = true
+        return button
     }()
     
     private lazy var emailContainerView: UIView = {
@@ -91,6 +96,12 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Selectors
     
+    @objc func handleSelectPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     @objc func handleSignUp() {
 
         guard let email = emailTextField.text else { return }
@@ -160,10 +171,10 @@ final class SignUpViewController: UIViewController {
         
         configureGradientBackground()
         
-        view.addSubview(iconImage)
-        iconImage.centerX(inView: view)
-        iconImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
-        iconImage.setDimensions(height: 250, width: 300)
+        view.addSubview(plusPhotoButton)
+        plusPhotoButton.centerX(inView: view)
+        plusPhotoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        plusPhotoButton.setDimensions(height: 200, width: 200)
         
         let stack = UIStackView(arrangedSubviews: [emailContainerView,
                                                    fullnameContainerView,
@@ -174,7 +185,7 @@ final class SignUpViewController: UIViewController {
         stack.spacing = 16
         
         view.addSubview(stack)
-        stack.anchor(top: iconImage.bottomAnchor, left: view.leftAnchor,
+        stack.anchor(top: plusPhotoButton.bottomAnchor, left: view.leftAnchor,
                      right: view.rightAnchor, paddingTop: 32, paddingLeft: 32,
                      paddingRight: 32)
         
@@ -206,5 +217,21 @@ extension SignUpViewController: AuthenticationControllerProtocol {
             signUpButton.isEnabled = false
             signUpButton.backgroundColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 0.6332005381)
         }
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
+                                 info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        profileImage = image
+        plusPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        plusPhotoButton.layer.borderColor = UIColor.white.cgColor
+        plusPhotoButton.layer.borderWidth = 3.0
+        plusPhotoButton.layer.cornerRadius = 200 / 2
+        
+        dismiss(animated: true, completion: nil)
     }
 }

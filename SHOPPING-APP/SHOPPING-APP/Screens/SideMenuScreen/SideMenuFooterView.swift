@@ -25,7 +25,7 @@ final class SideMenuFooterView: UIView {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.backgroundColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         button.layer.cornerRadius = 5
-        button.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleeLogout), for: .touchUpInside)
         return button
     }()
     
@@ -48,7 +48,7 @@ final class SideMenuFooterView: UIView {
     
     // MARK: - Selectors
     
-    @objc func handleLogout() {
+    @objc func handleeLogout() {
         delegate?.handleLogout()
     }
     
