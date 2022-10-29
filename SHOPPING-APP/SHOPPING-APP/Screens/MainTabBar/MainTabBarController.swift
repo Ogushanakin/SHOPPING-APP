@@ -66,10 +66,11 @@ import SideMenu
     private func configureViewControllers() {
         view.backgroundColor = .white
         
+        let layout = UICollectionViewFlowLayout()
         let products = templateNavigationController(unselectedImage: UIImage(systemName: "shippingbox")!,
                                                     selectedImage: UIImage(systemName: "shippingbox")!,
                                                     title: "Products",
-                                                    rootViewController: ProductsController())
+                                                    rootViewController: ProductsController(collectionViewLayout: layout))
         
         let search = templateNavigationController(unselectedImage: UIImage(systemName: "magnifyingglass")!,
                                                   selectedImage: UIImage(systemName: "magnifyingglass")!,
