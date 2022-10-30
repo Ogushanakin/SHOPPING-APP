@@ -19,7 +19,6 @@ import SideMenu
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        authenticationUser()
         configureViewControllers()
         configureNavigationBarButtons()
     }

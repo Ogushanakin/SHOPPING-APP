@@ -31,6 +31,8 @@ final class ProductsController: UICollectionViewController {
     
 }
 
+
+    // MARK: - CollectionViewDELEGATE-DATASOURCE
 extension ProductsController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
@@ -41,6 +43,15 @@ extension ProductsController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+            let controller = ProductDetailController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .popover
+            self.present(nav, animated: true, completion: nil)
+        
+    }
+    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let defaultOffSet = view.safeAreaInsets.top
         let offset = scrollView.contentOffset.y + defaultOffSet
@@ -49,6 +60,7 @@ extension ProductsController {
     }
 }
 
+    // MARK: - CollectionViewDELEGATEFLOWLAYOUT
 extension ProductsController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
@@ -59,7 +71,7 @@ extension ProductsController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: 250)
     }
     
-    // MARK: - CollectionViewHeader
+    // MARK: - CollectionViewHEADER
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeroHeaderView.identifier, for: indexPath)

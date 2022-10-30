@@ -53,6 +53,10 @@
 		71B328E12909B3FC009080C8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 71B328E02909B3FC009080C8 /* FirebaseDatabase */; };
 		71B328E32909B3FC009080C8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 71B328E22909B3FC009080C8 /* FirebaseFirestore */; };
 		71B328E52909B3FC009080C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 71B328E42909B3FC009080C8 /* FirebaseStorage */; };
+		71BF8371290EBC4100B12A25 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF8370290EBC4100B12A25 /* ProductViewModel.swift */; };
+		71BF8373290EBC5300B12A25 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF8372290EBC5300B12A25 /* ProductHeader.swift */; };
+		71BF8375290EBC6200B12A25 /* ProductDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF8374290EBC6200B12A25 /* ProductDetailCell.swift */; };
+		71BF8377290EBC7500B12A25 /* ProductFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BF8376290EBC7500B12A25 /* ProductFooterView.swift */; };
 		71E8DC302907CA9500839C03 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E8DC2E2907CA9500839C03 /* OnboardingViewController.swift */; };
 		71E8DC312907CA9500839C03 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 71E8DC2F2907CA9500839C03 /* OnboardingViewController.xib */; };
 /* End PBXBuildFile section */
@@ -101,6 +105,10 @@
 		71B12E7A2907F8B300C7D9F8 /* OnboardingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingItem.swift; sourceTree = "<group>"; };
 		71B12E7D290835E300C7D9F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71B328DB2909B155009080C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		71BF8370290EBC4100B12A25 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		71BF8372290EBC5300B12A25 /* ProductHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHeader.swift; sourceTree = "<group>"; };
+		71BF8374290EBC6200B12A25 /* ProductDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailCell.swift; sourceTree = "<group>"; };
+		71BF8376290EBC7500B12A25 /* ProductFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFooterView.swift; sourceTree = "<group>"; };
 		71E8DC2E2907CA9500839C03 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		71E8DC2F2907CA9500839C03 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				716D87C529095F6700132D0B /* SearchController.swift */,
-				71233B6C290BF11F00DA4B14 /* ProductDetailController.swift */,
 			);
 			path = SearchScreen;
 			sourceTree = "<group>";
@@ -227,6 +234,7 @@
 		7180311B2906EA6200C163F9 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				71BF836F290EB48C00B12A25 /* ProductDetailScreen */,
 				7101BE03290BE3E3007DA8F6 /* SideMenuScreen */,
 				7101BE00290BD26B007DA8F6 /* CartScreen */,
 				718031212906EAED00C163F9 /* OnboardingScreens */,
@@ -364,6 +372,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		71BF836F290EB48C00B12A25 /* ProductDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				71233B6C290BF11F00DA4B14 /* ProductDetailController.swift */,
+				71BF8370290EBC4100B12A25 /* ProductViewModel.swift */,
+				71BF8372290EBC5300B12A25 /* ProductHeader.swift */,
+				71BF8374290EBC6200B12A25 /* ProductDetailCell.swift */,
+				71BF8376290EBC7500B12A25 /* ProductFooterView.swift */,
+			);
+			path = ProductDetailScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,6 +476,7 @@
 				715ACFC9290AD47900265E2D /* HeroHeaderView.swift in Sources */,
 				710DB2C7290B39C400B650B5 /* SideMenuViewController.swift in Sources */,
 				71B12E7E290835E300C7D9F8 /* LoginViewController.swift in Sources */,
+				71BF8377290EBC7500B12A25 /* ProductFooterView.swift in Sources */,
 				716D87C229095F0D00132D0B /* MainTabBarController.swift in Sources */,
 				7101BE09290BE4FE007DA8F6 /* SideMenuCell.swift in Sources */,
 				71233B6D290BF11F00DA4B14 /* ProductDetailController.swift in Sources */,
@@ -464,7 +485,10 @@
 				71AD5DD4290A8C14005F81AD /* Constants.swift in Sources */,
 				7101BE02290BD27C007DA8F6 /* CartController.swift in Sources */,
 				7180314B290735D100C163F9 /* Extensions.swift in Sources */,
+				71BF8373290EBC5300B12A25 /* ProductHeader.swift in Sources */,
 				716D87C829095F8700132D0B /* ProfileController.swift in Sources */,
+				71BF8375290EBC6200B12A25 /* ProductDetailCell.swift in Sources */,
+				71BF8371290EBC4100B12A25 /* ProductViewModel.swift in Sources */,
 				7180313D29072C2D00C163F9 /* FirstOnboardingViewController.swift in Sources */,
 				71E8DC302907CA9500839C03 /* OnboardingViewController.swift in Sources */,
 				71AD5DCD290A8B52005F81AD /* ProfileCell.swift in Sources */,
