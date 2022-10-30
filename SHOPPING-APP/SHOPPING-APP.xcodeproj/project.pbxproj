@@ -39,6 +39,9 @@
 		7186D82729088F3400EDA60B /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186D82629088F3400EDA60B /* InputContainerView.swift */; };
 		7186D82929088F5600EDA60B /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186D82829088F5600EDA60B /* CustomTextField.swift */; };
 		7186D82B29088FBD00EDA60B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7186D82A29088FBD00EDA60B /* LoginViewModel.swift */; };
+		7197FEB4290EFCBD00596DA4 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197FEB3290EFCBD00596DA4 /* CartTableViewCell.swift */; };
+		7197FEB6290EFE6900596DA4 /* CartFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197FEB5290EFE6900596DA4 /* CartFooterView.swift */; };
+		7197FEB8290EFEAF00596DA4 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7197FEB7290EFEAF00596DA4 /* CartViewModel.swift */; };
 		71AD5DC9290A8B10005F81AD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD5DC8290A8B10005F81AD /* ProfileViewModel.swift */; };
 		71AD5DCB290A8B39005F81AD /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD5DCA290A8B39005F81AD /* ProfileHeader.swift */; };
 		71AD5DCD290A8B52005F81AD /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AD5DCC290A8B52005F81AD /* ProfileCell.swift */; };
@@ -95,6 +98,9 @@
 		7186D82629088F3400EDA60B /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		7186D82829088F5600EDA60B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		7186D82A29088FBD00EDA60B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		7197FEB3290EFCBD00596DA4 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		7197FEB5290EFE6900596DA4 /* CartFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFooterView.swift; sourceTree = "<group>"; };
+		7197FEB7290EFEAF00596DA4 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		71AD5DC8290A8B10005F81AD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		71AD5DCA290A8B39005F81AD /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		71AD5DCC290A8B52005F81AD /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
@@ -133,6 +139,9 @@
 			isa = PBXGroup;
 			children = (
 				7101BE01290BD27C007DA8F6 /* CartController.swift */,
+				7197FEB3290EFCBD00596DA4 /* CartTableViewCell.swift */,
+				7197FEB5290EFE6900596DA4 /* CartFooterView.swift */,
+				7197FEB7290EFEAF00596DA4 /* CartViewModel.swift */,
 			);
 			path = CartScreen;
 			sourceTree = "<group>";
@@ -478,6 +487,7 @@
 				71B12E7E290835E300C7D9F8 /* LoginViewController.swift in Sources */,
 				71BF8377290EBC7500B12A25 /* ProductFooterView.swift in Sources */,
 				716D87C229095F0D00132D0B /* MainTabBarController.swift in Sources */,
+				7197FEB4290EFCBD00596DA4 /* CartTableViewCell.swift in Sources */,
 				7101BE09290BE4FE007DA8F6 /* SideMenuCell.swift in Sources */,
 				71233B6D290BF11F00DA4B14 /* ProductDetailController.swift in Sources */,
 				7186D82929088F5600EDA60B /* CustomTextField.swift in Sources */,
@@ -498,7 +508,9 @@
 				716D87C629095F6700132D0B /* SearchController.swift in Sources */,
 				71B12E7B2907F8B300C7D9F8 /* OnboardingItem.swift in Sources */,
 				71AD5DC9290A8B10005F81AD /* ProfileViewModel.swift in Sources */,
+				7197FEB6290EFE6900596DA4 /* CartFooterView.swift in Sources */,
 				716D87C429095F4400132D0B /* ProductsController.swift in Sources */,
+				7197FEB8290EFEAF00596DA4 /* CartViewModel.swift in Sources */,
 				7186D82B29088FBD00EDA60B /* LoginViewModel.swift in Sources */,
 				710B9309290DCE030050DBDD /* UserModel.swift in Sources */,
 				7180310A2906E75600C163F9 /* SceneDelegate.swift in Sources */,
