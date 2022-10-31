@@ -8,10 +8,6 @@
 import UIKit
 import Firebase
 
-protocol AuthenticationControllerProtocol {
-    func checkFormStatus()
-}
-
 protocol AuthenticationDelegate: AnyObject {
     func authenticationComplete()
 }
@@ -90,24 +86,18 @@ final class LoginViewController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+        AuthService.logUserIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                print("DEBUG: Error signing in \(error.localizedDescription)")
+                print("DEBUG: Failed to register user \(error.localizedDescription)")
                 return
             }
-            
-            let controller = MainTabBarController()
-            let nav = UINavigationController(rootViewController: controller)
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
     @objc func handleShowSignUp() {
         let controller = SignUpViewController()
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc func textDidChange(sender: UITextField) {
@@ -118,6 +108,18 @@ final class LoginViewController: UIViewController {
         }
         
         checkFormStatus()
+    }
+    
+    @objc func keyboardWillShow() {
+        if view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 88
+        }
+    }
+    
+    @objc func keyboardWillHide() {
+        if view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
+        }
     }
     
     
@@ -150,8 +152,11 @@ final class LoginViewController: UIViewController {
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
+    
    
 }
+
+    // MARK: - UpdateFormProtocol
 
 extension LoginViewController: AuthenticationControllerProtocol {
     

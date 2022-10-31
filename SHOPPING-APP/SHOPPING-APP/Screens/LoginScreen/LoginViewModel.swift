@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol AuthenticationControllerProtocol {
+    func checkFormStatus()
+}
+
 struct LoginViewModel {
     var email: String?
     var password: String?

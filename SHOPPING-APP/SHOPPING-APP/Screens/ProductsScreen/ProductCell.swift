@@ -11,6 +11,10 @@ final class ProductCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    var viewModel: ProductViewModel? {
+        didSet { configure() }
+    }
+    
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .white
@@ -44,7 +48,8 @@ final class ProductCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.numberOfLines = 2
+        label.font = UIFont.systemFont(ofSize: 12)
         label.text = "Wind Breaker Jacket"
         return label
     }()
@@ -80,6 +85,14 @@ final class ProductCell: UICollectionViewCell {
     }
     
     // MARK: - Helpers
+    
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        titleLabel.text = viewModel.title
+        priceLabel.text = viewModel.price + "$"
+        imageView.sd_setImage(with: viewModel.imageUrl)
+    }
     
     func configureViewComponents() {
         self.layer.cornerRadius = 8

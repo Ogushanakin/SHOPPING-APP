@@ -29,7 +29,7 @@ final class CartFooterView: UIView {
         return button
     }()
     
-    lazy var titleContainerView: UIView = {
+    private lazy var titleContainerView: UIView = {
         let view = UIView()
     
         let stack = UIStackView(arrangedSubviews: [totalLabel, totalCountLabel])
@@ -43,7 +43,7 @@ final class CartFooterView: UIView {
         return view
     }()
     
-    let totalLabel: UILabel = {
+    private lazy var totalLabel: UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 26, weight: .light)
@@ -52,11 +52,10 @@ final class CartFooterView: UIView {
         return label
     }()
     
-    let totalCountLabel: UILabel = {
+    private lazy var totalCountLabel: UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 26, weight: .bold)
-        label.text = "119.97$"
+        label.attributedText = attributedTotalLabel(value: 119.97, label: "Total")
         return label
     }()
     
@@ -92,4 +91,9 @@ final class CartFooterView: UIView {
     
     // MARK: - Helpers
     
+    func attributedTotalLabel(value: Double, label: String) -> NSAttributedString {
+        let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [ .font: UIFont.boldSystemFont(ofSize: 26)])
+        attributedText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 26)]))
+        return attributedText
+    }
 }

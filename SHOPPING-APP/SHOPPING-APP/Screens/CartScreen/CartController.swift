@@ -85,14 +85,7 @@ extension CartController {
      // MARK: - UITableViewDelegate
 
 extension CartController {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let viewModel = ProductViewModel(rawValue: indexPath.row) else { return }
-        
-        switch viewModel {
-        case .description:
-            print("DEBUG: Show account info page..")
-        }
-    }
+   
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()

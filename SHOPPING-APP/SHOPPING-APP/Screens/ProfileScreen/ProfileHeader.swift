@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol ProfileHeaderDelegate: AnyObject {
     func dismissController()
@@ -72,6 +73,11 @@ final class ProfileHeader: UIView {
     func populateUserData() {
         guard let user = user else { return }
         
+        var profileImageUrl: URL? {
+            return URL(string: user.profileImageUrl)
+        }
+        
+        profileImageView.sd_setImage(with: profileImageUrl)
         fullnameLabel.text = user.fullname
         usernameLabel.text = "@" + user.username
 
