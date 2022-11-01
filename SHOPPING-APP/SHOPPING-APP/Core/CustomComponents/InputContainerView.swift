@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Used Login and SignUp Screen
+
 final class InputContainerView: UIView {
     
     init(image: UIImage?, textField: UITextField) {

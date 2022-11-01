@@ -91,7 +91,10 @@ final class LoginViewController: UIViewController {
                 print("DEBUG: Failed to register user \(error.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            let controller = MainTabBarController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
         }
     }
     

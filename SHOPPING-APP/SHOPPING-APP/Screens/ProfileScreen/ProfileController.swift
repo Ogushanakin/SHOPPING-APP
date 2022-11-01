@@ -113,7 +113,7 @@ extension ProfileController {
     }
 }
 
-// MARK: - ProfileHeaderDelegate
+// MARK: - ProfileHeaderDelegate & ProfileFooterDelegate
 
 extension ProfileController: ProfileHeaderDelegate {
     func dismissController() {

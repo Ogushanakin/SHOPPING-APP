@@ -95,6 +95,8 @@ extension ProductsController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+    // MARK: - ProductCellDelegate
+
 extension ProductsController: ProductCellDelegate {
     func cell(_ cell: ProductCell, addedCart product: ProductModel) {
         
