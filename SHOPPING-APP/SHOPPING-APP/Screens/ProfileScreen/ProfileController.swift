@@ -126,19 +126,20 @@ extension ProfileController: ProfileFooterDelegate {
         let alert = UIAlertController(title: nil, message: "Are you sure you want to logout?", preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { _ in
-            self.dismiss(animated: true) {
-                self.delegate?.handleLogout()
+            do {
+                try Auth.auth().signOut()
+                let controller = LoginViewController()
+                let nav = UINavigationController(rootViewController: controller)
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+                
+            } catch {
+                print("DEBU: Failed")
             }
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         present(alert, animated: true, completion: nil)
-        
-        let controller = LoginViewController()
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
-        
     }
 }

@@ -96,44 +96,29 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Selectors
     
-    @objc func handleSelectPhoto() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
     @objc func handleSignUp() {
 
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         guard let fullname = fullnameTextField.text else { return }
+        guard let username = usernameTextField.text?.lowercased() else { return }
+        guard let profileImage = self.profileImage else { return }
         
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+        let credentials = AuthCredentials(email: email, password: password, fullname: fullname,
+                                          username: username, profileImage: profileImage)
+        
+        AuthService.registerUser(withCredential: credentials) { error in
             if let error = error {
-                print("DEBUG: failed to create user with error: \(error.localizedDescription)")
+                print("DEBUG: Failed to register user \(error.localizedDescription)")
                 return
             }
-            guard let uid = result?.user.uid else { return }
             
-            let values = ["email": email, "fullname": fullname]
-            
-            Database.database().reference().child("users").child(uid).updateChildValues(values) { (err, ref) in
-                if let error = error {
-                    print("DEBUG: failed to upload user data with error: \(error.localizedDescription)")
-                    return
-                }
-                print("DEBUG: Successfully created user and upload user info...")
-            }
+            self.dismiss(animated: true, completion: nil)
         }
-
-        let controller = MainTabBarController()
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
     }
     
     @objc func handleShowLogin() {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func textDidChange(sender: UITextField) {
@@ -145,9 +130,16 @@ final class SignUpViewController: UIViewController {
             viewModel.username = sender.text
         } else if sender == passwordTextField {
             viewModel.password = sender.text
-            
-            checkFormStatus()
         }
+        
+        checkFormStatus()
+    }
+    
+    @objc func handleSelectPhoto() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
     }
     
     @objc func keyboardWillShow() {
@@ -207,6 +199,9 @@ final class SignUpViewController: UIViewController {
    
 }
 
+
+    // MARK: - UpdateFormProtocol
+
 extension SignUpViewController: AuthenticationControllerProtocol {
     
     func checkFormStatus() {
@@ -225,13 +220,15 @@ extension SignUpViewController: AuthenticationControllerProtocol {
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
                                  info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[.originalImage] as? UIImage
-        profileImage = image
-        plusPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
-        plusPhotoButton.layer.borderColor = UIColor.white.cgColor
-        plusPhotoButton.layer.borderWidth = 3.0
-        plusPhotoButton.layer.cornerRadius = 200 / 2
+        guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        profileImage = selectedImage
         
-        dismiss(animated: true, completion: nil)
+        plusPhotoButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        plusPhotoButton.layer.borderColor = UIColor.white.cgColor
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderWidth = 2
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }

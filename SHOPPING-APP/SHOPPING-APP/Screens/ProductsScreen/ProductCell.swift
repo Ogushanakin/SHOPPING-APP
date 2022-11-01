@@ -7,9 +7,19 @@
 
 import UIKit
 
+protocol ProductCellDelegate: AnyObject {
+    func cell(_ cell: ProductCell, addedCart product: ProductModel)
+}
+
 final class ProductCell: UICollectionViewCell {
     
     // MARK: - Properties
+    
+    var viewModel: ProductViewModel? {
+        didSet { configure() }
+    }
+    
+    weak var delegate: ProductCellDelegate?
     
     let imageView: UIImageView = {
         let iv = UIImageView()
@@ -23,7 +33,7 @@ final class ProductCell: UICollectionViewCell {
         let button = UIButton()
         button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.tintColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
-        button.addTarget(self, action: #selector(like), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapCart), for: .touchUpInside)
         return button
     }()
     
@@ -44,7 +54,8 @@ final class ProductCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 18)
+        label.numberOfLines = 2
+        label.font = UIFont.systemFont(ofSize: 12)
         label.text = "Wind Breaker Jacket"
         return label
     }()
@@ -62,8 +73,7 @@ final class ProductCell: UICollectionViewCell {
         let button = UIButton()
         button.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
         button.tintColor = .white
-        button.addTarget(self, action: #selector(addCart), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapCart), for: .touchUpInside)
         return button
     }()
     
@@ -81,6 +91,14 @@ final class ProductCell: UICollectionViewCell {
     
     // MARK: - Helpers
     
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        titleLabel.text = viewModel.title
+        priceLabel.text = viewModel.price + "$"
+        imageView.sd_setImage(with: viewModel.imageUrl)
+    }
+    
     func configureViewComponents() {
         self.layer.cornerRadius = 8
         self.clipsToBounds = true
@@ -95,8 +113,11 @@ final class ProductCell: UICollectionViewCell {
         titleContainerView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 80)
     }
     
-    @objc func addCart() {
-        print("Added to Cart")
+    // MARK: - Selectors
+    
+    @objc func didTapCart() {
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(self, addedCart: viewModel.product)
     }
     
     @objc func like() {

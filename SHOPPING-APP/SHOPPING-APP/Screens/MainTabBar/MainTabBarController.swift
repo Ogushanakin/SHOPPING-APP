@@ -21,6 +21,7 @@ import SideMenu
         view.backgroundColor = .systemBackground
         configureViewControllers()
         configureNavigationBarButtons()
+        checkIfUserIsLoggedIn()
     }
     
     // MARK: - API
@@ -34,8 +35,8 @@ import SideMenu
         }
     }
     
-    func authenticationUser() {
-        if Auth.auth().currentUser?.uid == nil {
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
                 self.presentLoginController()
             }

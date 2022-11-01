@@ -6,131 +6,57 @@
 //
 
 import UIKit
-import Firebase
+import SDWebImage
 
-private let cellreuseIdentifier = "ProductDetailCell"
-
-protocol ProductControllerDelegate: AnyObject {
-    func handleLogout()
-}
-
-final class ProductDetailController: UITableViewController {
+final class ProductDetailViewController: UIViewController {
     
     // MARK: - Properties
-    
-    weak var delegate: ProductControllerDelegate?
-    
-    private var product: ProductModel? {
-        didSet { headerView.product = product }
+    var viewModel: ProductViewModel? {
+        didSet { configure() }
     }
     
-    private lazy var headerView = ProductHeader(frame: .init(x: 0, y: 0,
-                                                             width: view.frame.width,
-                                                             height: 480))
-    
-    private let footerView = ProductFooterView()
+    private let detailView = ProductDetailView()
     
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        fetchProduct()
-    }
-    
-    // MARK: - Selectors
-    
-    @objc func closeDetailPage(){
-        dismiss(animated: true, completion: nil)
-    }
-    
-    // MARK: - API
-    
-    func fetchProduct() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        Service.fetchProduct(withUid: uid) { product in
-            self.product = product
-            
-        }
-    }
-    
-    // MARK: - Helpers
-    
-    func configureUI() {
+        view = detailView
         
-        navigationItem.title = "Product Detail"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(closeDetailPage))
+        configureNavBar()
+    }
+
+    // MARK: - Methods
+    
+    func configureNavBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(closeDetail))
         navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.222751677, green: 0.3736387491, blue: 0.3669503331, alpha: 1)
-        
-        tableView.tableHeaderView = headerView
-        headerView.delegate = self
-        tableView.register(ProductDetailCell.self, forCellReuseIdentifier: cellreuseIdentifier)
-        tableView.tableFooterView = UIView()
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.rowHeight = 180
-        tableView.backgroundColor = .white
-        
-        footerView.delegate = self
-        footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 250)
-        tableView.tableFooterView = footerView
-    }
-}
-
-    // MARK: - UITableViewDataSource
-
-extension ProductDetailController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ProductViewModel.allCases.count
+        navigationItem.title = "Product Detail"
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellreuseIdentifier, for: indexPath) as! ProductDetailCell
+    func configure() {
+        guard let viewModel = viewModel else { return }
         
-        let viewModel = ProductViewModel(rawValue: indexPath.row)
-        cell.viewModel = viewModel
-        
-        cell.selectionStyle = .none
-        return cell
-    }
-}
-
-     // MARK: - UITableViewDelegate
-
-extension ProductDetailController {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let viewModel = ProductViewModel(rawValue: indexPath.row) else { return }
-        
-        switch viewModel {
-        case .description:
-            print("DEBUG: Show account info page..")
-        }
+        detailView.priceLabel.text = viewModel.price + "$"
+        detailView.titleLabel.text = viewModel.title
+        detailView.descriptionLabel.text = viewModel.description
+        detailView.imageView.sd_setImage(with: viewModel.imageUrl)
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-}
-
-// MARK: - ProfileHeaderDelegate
-
-extension ProductDetailController: ProductHeaderDelegate {
-    func dismissController() {
+    @objc func closeDetail() {
         dismiss(animated: true, completion: nil)
     }
 }
 
-extension ProductDetailController: ProductFooterDelegate {
-    func handleLogout() {
-        let alert = UIAlertController(title: nil, message: "Are you sure you want add to Cart?", preferredStyle: .actionSheet)
+extension ProductDetailViewController: ProductCellDelegate {
+    func cell(_ cell: ProductCell, addedCart product: ProductModel) {
+        cell.viewModel?.product.didAddCart.toggle()
         
-        alert.addAction(UIAlertAction(title: "Add Cart", style: .destructive, handler: { _ in
-            self.dismiss(animated: true) {
-                self.delegate?.handleLogout()
+        if product.didAddCart {
+            print("DEBUG:.....")
+        } else {
+            ProductService.addCart(product: product) { _ in
+                cell.addToCart.setTitle("Disscart", for: .normal)
             }
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        present(alert, animated: true, completion: nil)
+        }
     }
 }

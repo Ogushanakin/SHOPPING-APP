@@ -28,14 +28,4 @@ struct Service {
             completion(user)
         }
     }
-    
-    static func fetchProduct(withUid uid: String, completion: @escaping(ProductModel) -> Void) {
-        COLLECTION_USERS.document(uid).getDocument { (snapshot, error) in
-            guard let dictionary = snapshot?.data() else { return }
-            let product = ProductModel(dictionary: dictionary)
-            completion(product)
-        }
-    }
-    
-    
 }
