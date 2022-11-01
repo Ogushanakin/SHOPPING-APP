@@ -6,8 +6,6 @@
 //
 
 import UIKit
-
-import UIKit
 import Firebase
 
 private let cellreuseIdentifier = "CartTableViewCell"
@@ -85,8 +83,6 @@ extension CartController {
      // MARK: - UITableViewDelegate
 
 extension CartController {
-   
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()
     }
