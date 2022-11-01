@@ -8,7 +8,7 @@
 import Foundation
 
 struct ProductViewModel {
-    private let product: ProductModel
+    var product: ProductModel
     
     var imageUrl: URL? { return URL(string: product.image) }
     

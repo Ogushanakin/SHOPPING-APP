@@ -45,6 +45,18 @@ final class ProductDetailViewController: UIViewController {
     @objc func closeDetail() {
         dismiss(animated: true, completion: nil)
     }
+}
 
-
+extension ProductDetailViewController: ProductCellDelegate {
+    func cell(_ cell: ProductCell, addedCart product: ProductModel) {
+        cell.viewModel?.product.didAddCart.toggle()
+        
+        if product.didAddCart {
+            print("DEBUG:.....")
+        } else {
+            ProductService.addCart(product: product) { _ in
+                cell.addToCart.setTitle("Disscart", for: .normal)
+            }
+        }
+    }
 }

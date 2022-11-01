@@ -12,6 +12,12 @@ final class ProductDetailView: UIView {
     
     // MARK: - Properties
     
+    var viewModel: ProductViewModel? {
+        didSet { configure() }
+    }
+    
+    weak var delegate: ProductCellDelegate?
+    
     lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .white
@@ -83,14 +89,14 @@ final class ProductDetailView: UIView {
         return label
     }()
     
-    private lazy var addCartButton: UIButton = {
+    lazy var addCartButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Add Cart", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.backgroundColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         button.layer.cornerRadius = 5
-        button.addTarget(self, action: #selector(addCart), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapCart), for: .touchUpInside)
         return button
     }()
     
@@ -172,8 +178,19 @@ final class ProductDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func addCart() {
-        print("Added to Cart")
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        priceLabel.text = viewModel.price + "$"
+        titleLabel.text = viewModel.title
+        descriptionLabel.text = viewModel.description
+        imageView.sd_setImage(with: viewModel.imageUrl)
+    }
+    
+    @objc func didTapCart() {
+        guard let viewModel = viewModel else { return }
+        let controller = ProductCell()
+        delegate?.cell(controller, addedCart: viewModel.product)
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseIdentifier = "ProductCell"
 
@@ -92,5 +93,20 @@ extension ProductsController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.size.width, height: 400)
+    }
+}
+
+extension ProductsController: ProductCellDelegate {
+    func cell(_ cell: ProductCell, addedCart product: ProductModel) {
+        
+        cell.viewModel?.product.didAddCart.toggle()
+        
+        if product.didAddCart {
+            ProductService.addCart(product: product) { _ in
+                cell.addToCart.setImage(UIImage(systemName: "cart.fill.badge.minus"), for: .normal)
+            }
+        } else {
+            
+        }
     }
 }

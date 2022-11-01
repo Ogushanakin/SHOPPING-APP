@@ -13,6 +13,8 @@ struct ProductModel {
     let image: String
     let title: String
     var price: Double
+    var carted: Int
+    var didAddCart = false
     
     init(id: String, dictionary: [String: Any]) {
         self.id = id
@@ -20,5 +22,6 @@ struct ProductModel {
         self.image = dictionary["image"] as? String ?? ""
         self.title = dictionary["title"] as? String ?? ""
         self.price = dictionary["price"] as? Double ?? 0.00
+        self.carted = dictionary["carted"] as? Int ?? 0
     }
 }
