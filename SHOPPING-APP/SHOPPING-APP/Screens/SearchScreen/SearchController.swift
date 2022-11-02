@@ -70,8 +70,8 @@ extension SearchController {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SearchScreenCell
         
         let product = inSearchMode ? filtredeProduct[indexPath.row] : products[indexPath.row]
-        cell.viewModel = ProductViewModel(product: product)
-        
+        cell.viewModel = inSearchMode ? ProductViewModel(product: filtredeProduct[indexPath.row])
+                                            : ProductViewModel(product: product)
         return cell
     }
 }

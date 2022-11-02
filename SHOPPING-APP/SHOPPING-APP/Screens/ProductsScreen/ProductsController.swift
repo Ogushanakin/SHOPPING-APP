@@ -15,6 +15,19 @@ final class ProductsController: UICollectionViewController {
     // MARK: - Properties
     
     private var products = [ProductModel]()
+    private var mensProducts = [ProductModel]()
+    private var womenProducts = [ProductModel]()
+    private var electronicsProducts = [ProductModel]()
+    private var jeweleriesProducts = [ProductModel]()
+    
+    lazy var itemsToDisplay = products
+    
+    lazy var segmentedControl: UISegmentedControl = {
+        let sc = UISegmentedControl(items: ["All", "Men", "Women", "Electronic", "Jewelery"])
+        sc.selectedSegmentTintColor = #colorLiteral(red: 0.222751677, green: 0.3736387491, blue: 0.3669503331, alpha: 1)
+        sc.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
+        return sc
+    }()
     
     // MARK: - Lifecycle
     
@@ -23,43 +36,10 @@ final class ProductsController: UICollectionViewController {
         
         configureUI()
         fetchProducts()
-    }
-    
-    // MARK: - Helpers
-    
-    func configureUI() {
-        collectionView.register(ProductCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.register(HeroHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeroHeaderView.identifier)
-    }
-    
-    // MARK: - API
-    
-    func fetchProducts() {
-        ProductService.fetchProducts { products in
-            self.products = products
-            self.collectionView.reloadData()
-        }
-    }
-}
-
-    // MARK: - CollectionViewDELEGATE-DATASOURCE
-extension ProductsController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductCell
-        cell.viewModel = ProductViewModel(product: products[indexPath.row])
-        return cell
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = ProductDetailViewController()
-        controller.viewModel = ProductViewModel(product: products[indexPath.row])
-        let nav = UINavigationController(rootViewController: controller)
-        nav.modalPresentationStyle = .popover
-        self.present(nav, animated: true, completion: nil)
+        fetchMenProducts()
+        fetchWomenProducts()
+        fetchElectronicsProducts()
+        fetchJeweleriesProducts()
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -68,6 +48,92 @@ extension ProductsController {
         
         navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
+    
+    // MARK: - Helpers
+    
+    func configureUI() {
+        collectionView.register(ProductCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(HeroHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeroHeaderView.identifier)
+        
+        self.navigationItem.titleView = segmentedControl
+    }
+    
+    // MARK: - Selectors
+    
+    @objc fileprivate func handleSegmentChange() {
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            itemsToDisplay = products
+        case 1:
+            itemsToDisplay = mensProducts
+        case 2:
+            itemsToDisplay = womenProducts
+        case 3:
+            itemsToDisplay = electronicsProducts
+        case 4:
+            itemsToDisplay = jeweleriesProducts
+        default:
+            itemsToDisplay = products
+        }
+        collectionView.reloadData()
+    }
+    
+    // MARK: - API
+    
+    func fetchProducts() {
+        ProductService.fetchProducts { products in
+            self.products = products
+        }
+        collectionView.reloadData()
+    }
+    
+    func fetchMenProducts() {
+        ProductService.fetchMens { products in
+            self.mensProducts = products
+        }
+    }
+    
+    func fetchWomenProducts() {
+        ProductService.fetchWomens { products in
+            self.womenProducts = products
+        }
+    }
+    
+    func fetchElectronicsProducts() {
+        ProductService.fetchElectronics { products in
+            self.electronicsProducts = products
+        }
+    }
+    
+    func fetchJeweleriesProducts() {
+        ProductService.fetchJeweleries { products in
+            self.jeweleriesProducts = products
+        }
+    }
+}
+
+    // MARK: - CollectionViewDELEGATE-DATASOURCE
+extension ProductsController {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return itemsToDisplay.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductCell
+        cell.viewModel = ProductViewModel(product: itemsToDisplay[indexPath.row])
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = ProductDetailViewController()
+        controller.viewModel = ProductViewModel(product: itemsToDisplay[indexPath.row])
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .popover
+        self.present(nav, animated: true, completion: nil)
+    }
+    
+    
 }
 
     // MARK: - CollectionViewDelegateFlowLayout
