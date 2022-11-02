@@ -26,7 +26,6 @@ final class ProfileHeader: UIView {
          let iv = UIImageView()
         iv.clipsToBounds = true
         iv.contentMode = .scaleAspectFill
-        iv.image = UIImage(named: "profile")
         iv.layer.borderColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         iv.layer.borderWidth = 4.0
         return iv
@@ -37,7 +36,6 @@ final class ProfileHeader: UIView {
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.textColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         label.textAlignment = .center
-        label.text = "Oğuzhan Akın"
         return label
     }()
     
@@ -46,7 +44,6 @@ final class ProfileHeader: UIView {
         label.textColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 18)
         label.textAlignment = .center
-        label.text = "@ogushanakin"
         return label
     }()
     

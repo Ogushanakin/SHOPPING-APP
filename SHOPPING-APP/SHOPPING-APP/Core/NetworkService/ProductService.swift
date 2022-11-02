@@ -15,7 +15,43 @@ struct ProductService {
     static func fetchProducts(completion: @escaping([ProductModel]) -> Void) {
         COLLECTION_PRODUCT.getDocuments { (snapshot, error) in
             guard let documents = snapshot?.documents else { return }
-
+            
+            let products = documents.map({ ProductModel(id: $0.documentID, dictionary: $0.data()) })
+            completion(products)
+        }
+    }
+    
+    static func fetchMens(completion: @escaping([ProductModel]) -> Void) {
+        COLLECTION_MEN.getDocuments { (snapshot, error) in
+            guard let documents = snapshot?.documents else { return }
+            
+            let products = documents.map({ ProductModel(id: $0.documentID, dictionary: $0.data()) })
+            completion(products)
+        }
+    }
+    
+    static func fetchWomens(completion: @escaping([ProductModel]) -> Void) {
+        COLLECTION_WOMEN.getDocuments { (snapshot, error) in
+            guard let documents = snapshot?.documents else { return }
+            
+            let products = documents.map({ ProductModel(id: $0.documentID, dictionary: $0.data()) })
+            completion(products)
+        }
+    }
+    
+    static func fetchElectronics(completion: @escaping([ProductModel]) -> Void) {
+        COLLECTION_ELECTRONIC.getDocuments { (snapshot, error) in
+            guard let documents = snapshot?.documents else { return }
+            
+            let products = documents.map({ ProductModel(id: $0.documentID, dictionary: $0.data()) })
+            completion(products)
+        }
+    }
+    
+    static func fetchJeweleries(completion: @escaping([ProductModel]) -> Void) {
+        COLLECTION_JEWELERY.getDocuments { (snapshot, error) in
+            guard let documents = snapshot?.documents else { return }
+            
             let products = documents.map({ ProductModel(id: $0.documentID, dictionary: $0.data()) })
             completion(products)
         }
@@ -32,9 +68,6 @@ struct ProductService {
         }
     }
     
-    static func dissCart() {
-        
-    }
 }
 
 
