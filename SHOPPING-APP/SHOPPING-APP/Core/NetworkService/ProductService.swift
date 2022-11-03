@@ -57,6 +57,15 @@ struct ProductService {
         }
     }
     
+    static func fetchCart(completion: @escaping([ProductModel]) -> Void) {
+        COLLECTION_CART.getDocuments { (snapshot, error) in
+            guard let documents = snapshot?.documents else { return }
+            
+            let products = documents.map({ ProductModel(id: $0.documentID, dictionary: $0.data()) })
+            completion(products)
+        }
+    }
+    
     static func addCart(product: ProductModel, completion: @escaping(FirestoreCompletion)) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
