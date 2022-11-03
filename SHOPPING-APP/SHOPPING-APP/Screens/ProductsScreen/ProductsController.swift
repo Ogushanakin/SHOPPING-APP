@@ -61,7 +61,6 @@ final class ProductsController: UICollectionViewController {
     // MARK: - Selectors
     
     @objc fileprivate func handleSegmentChange() {
-        
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             itemsToDisplay = products
@@ -84,8 +83,8 @@ final class ProductsController: UICollectionViewController {
     func fetchProducts() {
         ProductService.fetchProducts { products in
             self.products = products
+            self.collectionView.reloadData()
         }
-        collectionView.reloadData()
     }
     
     func fetchMenProducts() {
