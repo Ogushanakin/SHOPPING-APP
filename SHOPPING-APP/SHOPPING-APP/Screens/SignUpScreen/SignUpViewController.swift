@@ -160,8 +160,8 @@ final class SignUpViewController: UIViewController {
     func configureUI() {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
-        
-        configureGradientBackground()
+    
+        setGradientBackground()
         
         view.addSubview(plusPhotoButton)
         plusPhotoButton.centerX(inView: view)

@@ -14,6 +14,8 @@ final class ProductsController: UICollectionViewController {
     
     // MARK: - Properties
     
+    private let jsonService: JsonService = JsonService()
+    
     private var products = [ProductModel]()
     private var mensProducts = [ProductModel]()
     private var womenProducts = [ProductModel]()
@@ -110,6 +112,13 @@ final class ProductsController: UICollectionViewController {
             self.jeweleriesProducts = products
         }
     }
+    
+    /* private func initService() {
+        jsonService.fetchAllPosts { [weak self] (models) in
+        } onFail: { (data) in
+            print(data ?? "")
+        }
+    } */
 }
 
     // MARK: - CollectionViewDELEGATE-DATASOURCE
