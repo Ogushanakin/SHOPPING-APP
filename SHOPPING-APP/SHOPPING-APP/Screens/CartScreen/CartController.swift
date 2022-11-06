@@ -50,7 +50,7 @@ final class CartController: UITableViewController {
     
     func configureUI() {
         
-        navigationItem.title = "Product Detail"
+        navigationItem.title = "Cart"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(closeDetailPage))
         navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.222751677, green: 0.3736387491, blue: 0.3669503331, alpha: 1)
         
