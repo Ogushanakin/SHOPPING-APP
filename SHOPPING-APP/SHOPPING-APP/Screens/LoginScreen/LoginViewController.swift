@@ -81,7 +81,6 @@ final class LoginViewController: UIViewController {
     }
     
     // MARK: - Selectors
-    
     @objc func handleLogin() {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
@@ -132,7 +131,7 @@ final class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
         
-        configureGradientBackground()
+        setGradientBackground()
         
         view.addSubview(iconImage)
         iconImage.centerX(inView: view)
@@ -155,8 +154,6 @@ final class LoginViewController: UIViewController {
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
-    
-   
 }
 
     // MARK: - UpdateFormProtocol

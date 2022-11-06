@@ -21,6 +21,8 @@ final class CartController: UITableViewController {
     weak var delegate: CartControllerDelegate?
     private let footerView = CartFooterView()
     
+    private var cart = [ProductModel]()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -38,7 +40,10 @@ final class CartController: UITableViewController {
     // MARK: - API
     
     func fetchProduct() {
-        print("fetch")
+        ProductService.fetchCart { products in
+            self.cart = products
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Helpers
@@ -66,14 +71,13 @@ final class CartController: UITableViewController {
 
 extension CartController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return cart.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellreuseIdentifier, for: indexPath) as! CartTableViewCell
         
-        let viewModel = CartViewModel(rawValue: indexPath.row)
-        cell.viewModel = viewModel
+        cell.viewModel = ProductViewModel(product: cart[indexPath.row])
         
         cell.selectionStyle = .none
         return cell

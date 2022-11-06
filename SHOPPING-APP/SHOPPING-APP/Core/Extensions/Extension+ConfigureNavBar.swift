@@ -9,13 +9,18 @@ import UIKit
 
 extension UIViewController {
     
-    func configureGradientBackground() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.lightGray.cgColor, UIColor.darkGray.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
+    func setGradientBackground() {
+        let colorTop =  UIColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)).cgColor
+        let colorBottom = UIColor(#colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)).cgColor
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+                
+        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
+    
     
     func configureNavigationBar(withTitle title: String, prefersLargeTitles: Bool) {
         let appearance = UINavigationBarAppearance()

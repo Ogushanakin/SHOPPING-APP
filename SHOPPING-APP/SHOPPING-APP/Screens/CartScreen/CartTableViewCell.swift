@@ -11,14 +11,13 @@ final class CartTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var viewModel: CartViewModel? {
+    var viewModel: ProductViewModel? {
         didSet { configure() }
     }
     
     let productImage: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .white
-        iv.image = UIImage(named: "jacket")
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -43,7 +42,6 @@ final class CartTableViewCell: UITableViewCell {
         label.textColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.numberOfLines = 4
-        label.text = "Wind Breaker Jacket"
         return label
     }()
     
@@ -52,7 +50,6 @@ final class CartTableViewCell: UITableViewCell {
         label.textColor = #colorLiteral(red: 0.1220499948, green: 0.1906306446, blue: 0.2015277445, alpha: 1)
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.text = "39.99$"
         return label
     }()
     
@@ -72,7 +69,10 @@ final class CartTableViewCell: UITableViewCell {
     }
     
     func configure() {
-        backgroundColor = .white
+        guard let viewModel = viewModel else { return }
         
+        titleLabel.text = viewModel.title
+        priceLabel.text = viewModel.price + "$"
+        productImage.sd_setImage(with: viewModel.imageUrl)
     }
 }
