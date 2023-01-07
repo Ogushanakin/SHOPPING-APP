@@ -397,8 +397,8 @@
 		71B12E7C290835B400C7D9F8 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
-				7186D82A29088FBD00EDA60B /* LoginViewModel.swift */,
 				71B12E7D290835E300C7D9F8 /* LoginViewController.swift */,
+				7186D82A29088FBD00EDA60B /* LoginViewModel.swift */,
 			);
 			path = LoginScreen;
 			sourceTree = "<group>";

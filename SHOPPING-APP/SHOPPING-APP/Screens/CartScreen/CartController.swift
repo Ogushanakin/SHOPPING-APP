@@ -54,7 +54,6 @@ final class CartController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(closeDetailPage))
         navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.222751677, green: 0.3736387491, blue: 0.3669503331, alpha: 1)
         
-        
         tableView.register(CartTableViewCell.self, forCellReuseIdentifier: cellreuseIdentifier)
         tableView.tableFooterView = UIView()
         tableView.contentInsetAdjustmentBehavior = .never
